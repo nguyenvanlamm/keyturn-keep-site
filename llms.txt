@@ -1,0 +1,16 @@
+# Keyturn Keep
+
+> Keyturn Keep is a reverse-siege game for iPhone. On a rainy afternoon a pillow fort stands at the bottom of a patchwork quilt; a toy chest at the top springs open and wind-up tin toys march down to knock the fort over. The player has no weapon: brass keys sit on the quilt's seams, and every toy that crosses a key is wound backwards, turns brass and marches back up as the player's. Coming soon to the App Store; there is no store link yet.
+
+- How to play: drag along a seam to slide its key under a marching group. A turned toy walks home up its own column and knocks over the next toy coming down, one for one. Fill the toy chest until the lid shuts ("Lid Shut!") before the fort loses its 20 pillows ("Pillows Down"). A tap on the quilt drops a pillow on the closest toys.
+- Toys: mice walk straight in; beetles crack their shell on the first gate and turn on the second; bears need four turns of a key. Half gates turn every second toy, two-thirds gates two in three. Three sewn buttons wait on every level.
+- Content: 45 levels in three quilts (Patchwork, Flying Geese, Log Cabin), 15 each; the first five levels teach one idea at a time. Every level is beaten by a test bot in the game's automated checks without a booster.
+- Free: the first quilt, Patchwork (15 levels). Optional in-app purchases: All Quilts ($3.99, one time: Flying Geese and Log Cabin), Paint Set ($1.99, one time, cosmetic: paints for turned toys and quilt patterns), Toy Bag ($1.99: 5 Spare Keys and 5 Pillow Piles). Boosters are also earned in play.
+- No ads, no account, no analytics or tracking. The game collects no data; progress stays on the iPhone. It plays offline; only buying or restoring needs a connection.
+- Platform: iPhone only. The game is in English.
+
+## Pages
+
+- [Home](https://nguyenvanlamm.github.io/keyturn-keep-site/): what the game is, how it plays, prices, questions
+- [Support](https://nguyenvanlamm.github.io/keyturn-keep-site/support.html): contact, how to play, purchases and restoring, progress
+- [Privacy Policy](https://nguyenvanlamm.github.io/keyturn-keep-site/privacy.html): what the game stores on the device and what it never collects
