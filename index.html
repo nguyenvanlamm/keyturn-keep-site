@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keyturn Keep · turn the tin toys' march around</title>
+<meta name="description" content="Keyturn Keep: a reverse-siege game for iPhone. Slide brass keys along a quilt's seams and wind-up tin toys turn around to fight for your pillow fort. No ads, no tracking. Coming soon to the App Store.">
+<meta name="theme-color" content="#34465E">
+<link rel="canonical" href="https://nguyenvanlamm.github.io/keyturn-keep-site/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Keyturn Keep">
+<meta property="og:title" content="Keyturn Keep: turn the march around">
+<meta property="og:description" content="Wind-up tin toys march down a patchwork quilt to topple a pillow fort. Slide brass keys along the seams and every toy that passes turns around and fights for you.">
+<meta property="og:url" content="https://nguyenvanlamm.github.io/keyturn-keep-site/">
+<meta property="og:image" content="https://nguyenvanlamm.github.io/keyturn-keep-site/assets/game.webp">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --felt: #34465E; --felt-dark: #25344A; --felt-light: #3E5573; --on-felt: #D3DAE4;
+    --cream: #F6F0E2; --linen: #E7E0D2; --ink: #2A2622; --muted: #5A5247; --tag-line: #B9AE98;
+    --brass: #C4932A; --brass-high: #F2D27A; --brass-text: #3A2908; --pewter: #7B8189;
+    --denim: #A9B9C8; --butter: #EEDFAE; --heather: #C9BDD0; --oatmeal: #EAE1CF; --stitch: #FBF7EC;
+    --shadow: #1B2435;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--felt); color: var(--on-felt);
+    font: 400 17px/1.6 "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+  }
+  a { color: var(--brass-high); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+  h1, h2, h3 { font-family: Newsreader, Georgia, serif; font-weight: 600; color: var(--cream); }
+
+  /* A strip of quilt patches, stitched along the middle: the game's board, as a band. */
+  .quilt { display: grid; grid-template-columns: repeat(12, 1fr); height: 34px; position: relative; }
+  .quilt i:nth-child(4n+1) { background: var(--denim); }
+  .quilt i:nth-child(4n+2) { background: var(--butter); }
+  .quilt i:nth-child(4n+3) { background: var(--heather); }
+  .quilt i:nth-child(4n+4) { background: var(--oatmeal); }
+  .quilt::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 2px dashed var(--stitch); opacity: .9; }
+
+  header.hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; padding: 48px 0 40px; }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .brand img { width: 52px; height: 52px; border-radius: 12px; box-shadow: 2px 3px 0 var(--shadow); }
+  .brand span { font-family: Newsreader, Georgia, serif; font-weight: 600; font-size: 24px; color: var(--cream); }
+  h1 { font-size: clamp(40px, 6.4vw, 66px); line-height: 1; letter-spacing: -.015em; margin: 0 0 18px; }
+  h1 em { font-style: italic; font-weight: 400; color: var(--brass-high); }
+  .lede { font-size: 19px; max-width: 32em; margin: 0 0 26px; }
+  .cta {
+    display: inline-block; background: var(--brass); color: var(--brass-text); font-weight: 700; font-size: 18px;
+    padding: 14px 24px; border-radius: 10px; box-shadow: 3px 4px 0 var(--shadow);
+    outline: 2px dashed rgba(58, 41, 8, .45); outline-offset: -7px;
+  }
+  .facts { margin: 14px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 15px; }
+  .facts li::before { content: "✕"; color: var(--brass-high); margin-right: 6px; font-size: 12px; }
+  .phone { width: 100%; max-width: 320px; justify-self: center; display: block; border-radius: 30px; box-shadow: 6px 8px 0 var(--shadow); }
+
+  section { padding: 44px 0; }
+  h2 { font-size: clamp(28px, 4vw, 36px); line-height: 1.1; margin: 0 0 22px; }
+
+  /* Sewn fabric labels on the felt: cream cloth, a stitched edge inside. */
+  .label { background: var(--cream); color: var(--ink); border-radius: 6px; padding: 20px 22px; box-shadow: 2px 3px 0 var(--shadow); position: relative; }
+  .label::before { content: ""; position: absolute; inset: 6px; border: 1.5px dashed var(--tag-line); border-radius: 3px; pointer-events: none; }
+  .label h3 { color: var(--ink); margin: 0 0 6px; font-size: 21px; line-height: 1.2; }
+  .label p { margin: 0; color: var(--muted); }
+  .label a { color: #5A400F; }
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+
+  .turn { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .turn figure { margin: 0; text-align: center; }
+  .turn img { width: 100%; max-width: 260px; border-radius: 22px; box-shadow: 4px 6px 0 var(--shadow); }
+  .turn figcaption { font-family: Newsreader, Georgia, serif; font-style: italic; font-size: 18px; margin-top: 10px; color: var(--cream); }
+
+  ol.steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: s; }
+  ol.steps li { counter-increment: s; display: flex; gap: 14px; align-items: flex-start; }
+  ol.steps li::before {
+    content: counter(s); flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%;
+    background: var(--brass); color: var(--brass-text); font-weight: 700; box-shadow: 2px 2px 0 var(--shadow); position: relative; z-index: 1;
+  }
+  ol.steps strong { display: block; color: var(--ink); font-family: Newsreader, Georgia, serif; font-size: 19px; font-weight: 600; }
+
+  .price { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .price .label { display: flex; flex-direction: column; }
+  .price b { font-family: Newsreader, Georgia, serif; font-size: 26px; font-weight: 600; color: var(--ink); margin: 2px 0 6px; }
+  .price .free { background: var(--butter); }
+  .fair { margin: 18px 0 0; max-width: 46em; }
+
+  details { margin-bottom: 12px; padding: 14px 20px; }
+  summary { font-weight: 700; cursor: pointer; color: var(--ink); }
+  details p { margin: 10px 0 0; }
+
+  .final { text-align: center; padding: 52px 0; }
+  .final p { max-width: 34em; margin: 0 auto 22px; }
+  footer { padding: 28px 0 44px; font-size: 15px; border-top: 1px solid var(--felt-light); }
+  footer a { display: inline-block; padding: 10px 0; margin-right: 20px; font-weight: 700; }
+  footer p { margin: 6px 0 0; }
+
+  @media (max-width: 860px) { .price { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 760px) {
+    header.hero { grid-template-columns: 1fr; padding-top: 28px; }
+    .cards, .turn, ol.steps { grid-template-columns: 1fr; }
+    .quilt { grid-template-columns: repeat(6, 1fr); }
+    .quilt i:nth-child(n+7) { display: none; }
+  }
+  @media (max-width: 420px) { .price { grid-template-columns: 1fr; } .cta { font-size: 17px; padding: 13px 18px; } }
+</style>
+</head>
+<body>
+<div class="quilt" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <div class="brand"><img src="assets/icon.webp" alt="" width="52" height="52"><span>Keyturn Keep</span></div>
+      <h1>Turn the <em>march</em> around.</h1>
+      <p class="lede">Wind-up tin toys pour out of a toy chest to topple a pillow fort. You have no cannon, only brass keys on the quilt's seams. Every toy that passes a key turns around and marches home on your side.</p>
+      <span class="cta">Coming soon to the App Store</span>
+      <ul class="facts"><li>No ads</li><li>No account</li><li>No tracking</li><li>Plays offline</li></ul>
+    </div>
+    <img class="phone" src="assets/game.webp" alt="A Keyturn Keep level: grey tin toys march down a patchwork quilt; past a brass key on a seam they turn brass and march back up to the toy chest" width="390" height="844">
+  </header>
+
+  <main>
+  <section aria-labelledby="why">
+    <h2 id="why">Every soldier you have was theirs a second ago</h2>
+    <div class="cards">
+      <div class="label"><h3>Keys, not cannons</h3><p>Drag a turnkey gate along its seam to meet the march. Each toy that crosses is wound backwards: its key turns brass and it heads back up the quilt. A key holds ten turns and winds back up while you wait.</p></div>
+      <div class="label"><h3>One move, two jobs</h3><p>A turned toy marches back up its own column and knocks over the next toy coming down, one for one. Where you place a key decides who gets stopped and which lane your counter-march clears.</p></div>
+      <div class="label"><h3>Toys with tempers</h3><p>Mice walk straight in. Beetles crack their shell on the first gate and only turn on the second. Bears are slow, need four turns of a key, and knock four pillows off the fort if they reach it.</p></div>
+      <div class="label"><h3>A minute or two a level</h3><p>Fill the chest until the lid shuts before the fort loses its 20 pillows. Half gates turn every second toy, a tap drops a pillow on the closest toys, and three sewn buttons wait on every quilt.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="look">
+    <h2 id="look">On the quilt</h2>
+    <div class="turn">
+      <figure><img src="assets/home.webp" alt="The home screen: the toy chest on navy felt, three folded quilts and a big brass key labelled Wind Up" width="390" height="844" loading="lazy"><figcaption>Three quilts, forty-five levels</figcaption></figure>
+      <figure><img src="assets/hint.webp" alt="Level 1: a short hint and a dotted goal line over the first seam, with the brass key ready to slide" width="390" height="844" loading="lazy"><figcaption>Slide the key under the march</figcaption></figure>
+      <figure><img src="assets/win.webp" alt="A won level: the chest lid is shut and a card reads Lid Shut! with three stars" width="390" height="844" loading="lazy"><figcaption>Lid shut</figcaption></figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="how">
+    <h2 id="how">How it plays</h2>
+    <ol class="steps">
+      <li class="label"><span><strong>The chest springs open</strong>Groups of grey tin toys march down the quilt toward your pillow fort.</span></li>
+      <li class="label"><span><strong>Slide a key</strong>Drag along a seam to move its brass key under the march. Toys that cross turn brass and head back up.</span></li>
+      <li class="label"><span><strong>Shut the lid</strong>Get enough toys into the chest before the fort runs out of pillows.</span></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="price">
+    <h2 id="price">Pay once, if you like it</h2>
+    <div class="price">
+      <div class="label free"><h3>Patchwork</h3><b>Free</b><p>The first quilt: 15 levels, every rule taught one at a time.</p></div>
+      <div class="label"><h3>All Quilts</h3><b>$3.99</b><p>One-time unlock of Flying Geese and Log Cabin: 30 more levels with beetles, bears and two-thirds gates.</p></div>
+      <div class="label"><h3>Paint Set</h3><b>$1.99</b><p>One time. New paints for your turned toys and new quilt patterns. Looks only.</p></div>
+      <div class="label"><h3>Toy Bag</h3><b>$1.99</b><p>5 Spare Keys and 5 Pillow Piles, for the levels that get away from you.</p></div>
+    </div>
+    <p class="fair">You also start with two of each booster, earn more by winning levels for the first time, and can trade 12 sewn buttons for one. No ads, no lives, no timers between levels: a lost level restarts straight away. Restore Purchases sits in Settings and the Shop.</p>
+  </section>
+
+  <section aria-labelledby="faq">
+    <h2 id="faq">Questions</h2>
+    <details class="label"><summary>Is it free?</summary><p>The first quilt, Patchwork, is free with all 15 of its levels. Flying Geese and Log Cabin open with one purchase, All Quilts ($3.99). The Paint Set and the Toy Bag are optional.</p></details>
+    <details class="label"><summary>Are there ads?</summary><p>No. The game has no ads and no ad networks.</p></details>
+    <details class="label"><summary>Do you collect any data?</summary><p>No. There is no account, no analytics and no tracking. Your progress and purchases are saved on your device only. See the <a href="privacy.html">privacy policy</a>.</p></details>
+    <details class="label"><summary>Does it work offline?</summary><p>Yes. You only need a connection to buy or restore something in the Shop.</p></details>
+    <details class="label"><summary>Can every level be won without boosters?</summary><p>Yes. Every one of the 45 levels is beaten by a test player in the game's automated checks without using a booster.</p></details>
+  </section>
+
+  <section class="final" aria-labelledby="soon">
+    <h2 id="soon">The toys are winding up</h2>
+    <p>Keyturn Keep is coming to iPhone. The first quilt is free, and there is nothing to sign up for.</p>
+    <span class="cta">Coming soon to the App Store</span>
+  </section>
+  </main>
+
+  <footer>
+    <a href="privacy.html">Privacy</a><a href="support.html">Support</a>
+    <p>© 2026 Keyturn Keep. Typefaces: Newsreader and Hanken Grotesk (SIL Open Font License).</p>
+  </footer>
+</div>
+<div class="quilt" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</body>
+</html>
